@@ -1,0 +1,84 @@
+VALUE ITERATION PER UN AGENTE DI AUTOSCALING CLOUD
+
+1. Obiettivo del prototipo
+
+Il prototipo modella un servizio cloud come Markov Decision Process e applica la Value Iteration per calcolare una politica ottima di autoscaling.
+L'agente deve decidere se aumentare, mantenere o ridurre le risorse computazionali in base allo stato operativo del servizio.
+
+2. Stati del modello
+
+S1: Servizio stabile. Il servizio funziona bene e le risorse sono adeguate.
+S2: Servizio sovradimensionato. Il servizio funziona bene, ma usa troppe risorse.
+S3: Carico elevato. Il traffico è alto, ma il servizio è ancora stabile.
+S4: Servizio degradato. Il servizio è lento o vicino alla saturazione.
+S5: Servizio critico. Il servizio è in forte sofferenza o quasi indisponibile.
+
+3. Azioni disponibili
+
+scale_up: Aumentare le risorse computazionali.
+keep: Mantenere la configurazione attuale.
+scale_down: Ridurre le risorse computazionali.
+
+4. Parametri della Value Iteration
+
+Gamma: 0.9
+Gamma è il fattore di sconto. Un valore pari a 0.9 attribuisce forte importanza alle conseguenze future delle azioni.
+Theta: 0.001
+Theta è la soglia di convergenza. L'algoritmo si arresta quando la variazione massima della value function scende sotto questo valore.
+Iterazioni eseguite: 87
+Delta finale: 0.000918
+
+5. Value function finale
+
+La value function assegna a ogni stato il rinforzo scontato atteso partendo da quello stato e seguendo poi la politica ottima. Non rappresenta il rinforzo immediato, ma una stima del valore complessivo di lungo periodo.
+
+S1: 79.4218
+S2: 83.8077
+S3: 76.3419
+S4: 68.5467
+S5: 61.2641
+
+6. Politica ottima
+
+La politica ottima indica l'azione con valore atteso massimo in ciascuno stato.
+
+S1: keep. Mantenere la configurazione attuale.
+S2: scale_down. Ridurre le risorse computazionali.
+S3: scale_up. Aumentare le risorse computazionali.
+S4: scale_up. Aumentare le risorse computazionali.
+S5: scale_up. Aumentare le risorse computazionali.
+
+7. Valori attesi delle azioni
+
+Per ogni stato vengono riportati i valori attesi delle tre azioni disponibili. L'azione scelta dalla politica ottima è quella con valore maggiore.
+
+S1: Servizio stabile. Il servizio funziona bene e le risorse sono adeguate.
+scale_up: 74.5541. alternativa.
+keep: 79.4226. azione scelta dalla politica ottima.
+scale_down: 76.3394. alternativa.
+
+S2: Servizio sovradimensionato. Il servizio funziona bene, ma usa troppe risorse.
+scale_up: 74.6322. alternativa.
+keep: 79.5541. alternativa.
+scale_down: 83.8085. azione scelta dalla politica ottima.
+
+S3: Carico elevato. Il traffico è alto, ma il servizio è ancora stabile.
+scale_up: 76.3428. azione scelta dalla politica ottima.
+keep: 66.8680. alternativa.
+scale_down: 46.6566. alternativa.
+
+S4: Servizio degradato. Il servizio è lento o vicino alla saturazione.
+scale_up: 68.5476. azione scelta dalla politica ottima.
+keep: 51.7289. alternativa.
+scale_down: 33.7763. alternativa.
+
+S5: Servizio critico. Il servizio è in forte sofferenza o quasi indisponibile.
+scale_up: 61.2649. azione scelta dalla politica ottima.
+keep: 44.3610. alternativa.
+scale_down: 30.9931. alternativa.
+
+8. Interpretazione sintetica
+
+La politica ottenuta è coerente con il significato del dominio. Quando il servizio è stabile, l'agente mantiene la configurazione. Quando il servizio è sovradimensionato, riduce le risorse. Quando il carico è elevato, degradato o critico, aumenta le risorse per ridurre il rischio di peggioramento futuro.
+
+Il risultato mostra come la Value Iteration non scelga semplicemente l'azione con il vantaggio immediato più evidente, ma tenga conto del valore atteso degli stati futuri.
