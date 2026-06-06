@@ -29,7 +29,7 @@ Il dominio scelto è quello dell’autoscaling cloud. In tale contesto, un servi
 
 La decisione dell’agente non può essere valutata soltanto in termini immediati. Aumentare risorse può comportare un costo, ma ridurre il rischio di degrado futuro; ridurre risorse può diminuire lo spreco, ma aumentare il rischio di saturazione; mantenere la configurazione può essere adeguato in condizioni stabili, ma insufficiente in condizioni di carico elevato.
 
-Per questo motivo il problema è formulato come processo decisionale sequenziale sotto incertezza.
+Per questo motivo, il problema è formulato come processo decisionale sequenziale sotto incertezza.
 
 ## Formalizzazione come Markov Decision Process
 
@@ -80,7 +80,7 @@ La funzione considera due componenti:
 - la qualità operativa dello stato raggiunto;
 - il costo o il rischio associato all’azione scelta.
 
-In questo modo il modello evita una politica banale. L’agente non è incentivato ad aumentare sempre le risorse, perché tale azione può essere costosa; allo stesso tempo, non è incentivato a ridurle indiscriminatamente, perché ciò può aumentare il rischio di degrado o criticità.
+In questo modo, il modello evita una politica banale. L’agente non è incentivato ad aumentare sempre le risorse perché tale azione può essere costosa; allo stesso tempo, non è incentivato a ridurle indiscriminatamente perché ciò può aumentare il rischio di degrado o criticità.
 
 ## Algoritmo implementato
 
@@ -100,20 +100,20 @@ $$
 \pi^{\ast}(s)=\arg\max_{a}\sum_{s^{\prime}}P^{a}_{s s^{\prime}}\left[R^{a}_{s s^{\prime}}+\gamma V^{\ast}(s^{\prime})\right]
 $$
 
-Il processo iterativo continua fino a quando la massima variazione dei valori degli stati, indicata come `delta`, diventa inferiore alla soglia di convergenza `theta`.
+Il processo iterativo continua fino a quando la massima variazione dei valori degli stati, indicata come $\Delta$, diventa inferiore alla soglia di convergenza $\theta$.
 
 I parametri utilizzati sono:
 
 | Parametro | Valore | Significato |
 |---|---:|---|
-| `gamma` | `0.9` | Fattore di sconto dei rinforzi futuri. |
-| `theta` | `0.001` | Soglia di convergenza della value function. |
+| $\gamma$ | `0.9` | Fattore di sconto dei rinforzi futuri. |
+| $\theta$ | `0.001` | Soglia di convergenza della value function. |
 
-Il valore `gamma = 0.9` attribuisce rilevanza significativa alle conseguenze future delle azioni. Il valore `theta = 0.001` stabilisce il criterio di arresto dell’algoritmo.
+Il valore $\gamma$ = 0.9$ attribuisce rilevanza significativa alle conseguenze future delle azioni. Il valore $\theta$ = 0.001$ stabilisce il criterio di arresto dell’algoritmo.
 
 ## Risultati ottenuti
 
-L’esecuzione del programma porta alla convergenza della Value Iteration in 87 iterazioni, con delta finale pari a circa `0.000918`.
+L’esecuzione del programma porta alla convergenza della Value Iteration in 87 iterazioni con $\Delta$ finale pari a circa `0.000918`.
 
 La politica ottima calcolata è la seguente:
 
@@ -143,7 +143,7 @@ La politica ottenuta non dipende da una scelta manuale fissata nel codice, ma de
 
 ## Requisiti
 
-Il programma utilizza esclusivamente moduli standard di Python. Non è quindi necessario installare librerie esterne.
+Il programma utilizza esclusivamente moduli standard di Python. Non è, quindi, necessario installare librerie esterne.
 
 Versione utilizzata durante lo sviluppo e il test:
 
@@ -220,7 +220,7 @@ A ogni passo il programma mostra:
 - il rinforzo immediato ottenuto;
 - il confronto tra scelta manuale e azione ottima.
 
-Questa modalità non modifica la politica calcolata dall’algoritmo. Serve invece a mostrare, in modo operativo, come una scelta manuale possa coincidere o meno con la politica ottima ottenuta tramite Value Iteration.
+Questa modalità non modifica la politica calcolata dall’algoritmo. Serve, invece, a mostrare, in modo operativo, come una scelta manuale possa coincidere o meno con la politica ottima ottenuta tramite Value Iteration.
 
 ## Report dei risultati
 
@@ -237,7 +237,7 @@ Il report contiene:
 - azioni disponibili;
 - parametri della Value Iteration;
 - numero di iterazioni;
-- delta finale;
+- $\Delta$ finale;
 - value function finale;
 - politica ottima;
 - valori attesi delle azioni;
@@ -257,9 +257,9 @@ Le simulazioni prodotte dalle opzioni `8` e `9` rappresentano traiettorie probab
 
 Il prototipo non vuole essere un sistema industriale completo per l’autoscaling cloud, ma una realizzazione didattica coerente con il caso di studio discusso nell’elaborato scritto.
 
-Il suo scopo è mostrare in forma eseguibile l’applicazione della Value Iteration a un Markov Decision Process definito in un dominio ristretto ma significativo. Il programma consente infatti di osservare come, a partire da stati, azioni, transizioni probabilistiche e rinforzi, sia possibile calcolare una value function, ricavare una politica ottima e confrontare tale politica con scelte manuali effettuate dall’utente.
+Il suo scopo è mostrare in forma eseguibile l’applicazione della Value Iteration a un Markov Decision Process definito in un dominio ristretto ma significativo. Il programma consente, infatti, di osservare come, a partire da stati, azioni, transizioni probabilistiche e rinforzi, sia possibile calcolare una value function, ricavare una politica ottima e confrontare tale politica con scelte manuali effettuate dall’utente.
 
-Il progetto rende quindi verificabile l’intero passaggio:
+Il progetto rende, pertanto, verificabile l’intero passaggio:
 
 ```text
 problema di autoscaling cloud
