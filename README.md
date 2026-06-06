@@ -91,13 +91,13 @@ La value function viene inizializzata a zero per tutti gli stati. A ogni iterazi
 A convergenza, la value function soddisfa l’equazione di Bellman:
 
 $$
-V^*(s)=\max_a \sum_{s'} P^a_{ss'} \left[R^a_{ss'}+\gamma V^*(s')\right]
+V^{\ast}(s)=\max_{a}\sum_{s^{\prime}}P^{a}_{s s^{\prime}}\left[R^{a}_{s s^{\prime}}+\gamma V^{\ast}(s^{\prime})\right]
 $$
 
 Una volta stimata la value function ottima, la politica ottima viene ricavata scegliendo, per ogni stato, l’azione che massimizza il valore atteso:
 
 $$
-\pi^*(s)=\arg\max_a \sum_{s'} P^a_{ss'} \left[R^a_{ss'}+\gamma V^*(s')\right]
+\pi^{\ast}(s)=\arg\max_{a}\sum_{s^{\prime}}P^{a}_{s s^{\prime}}\left[R^{a}_{s s^{\prime}}+\gamma V^{\ast}(s^{\prime})\right]
 $$
 
 Il processo iterativo continua fino a quando la massima variazione dei valori degli stati, indicata come `delta`, diventa inferiore alla soglia di convergenza `theta`.
