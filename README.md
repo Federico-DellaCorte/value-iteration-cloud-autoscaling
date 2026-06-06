@@ -109,7 +109,7 @@ I parametri utilizzati sono:
 | $\gamma$ | `0.9` | Fattore di sconto dei rinforzi futuri. |
 | $\theta$ | `0.001` | Soglia di convergenza della value function. |
 
-Il valore $\gamma$ = 0.9$ attribuisce rilevanza significativa alle conseguenze future delle azioni. Il valore $\theta$ = 0.001$ stabilisce il criterio di arresto dell’algoritmo.
+Il valore $\gamma = 0.9$ attribuisce rilevanza significativa alle conseguenze future delle azioni. Il valore $\theta = 0.001$ stabilisce il criterio di arresto dell’algoritmo.
 
 ## Risultati ottenuti
 
